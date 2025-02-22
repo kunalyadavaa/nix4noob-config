@@ -2,7 +2,15 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
+let
+  nix-software-center = import (pkgs.fetchFromGitHub {
+    owner = "snowfallorg";
+    repo = "nix-software-center";
+    rev = "0.1.2";
+    sha256 = "xiqF1mP8wFubdsAQ1BmfjzCgOD3YZf7EGWl9i69FTls=";
+  }) {};
+in
 
 {
   imports =
@@ -57,6 +65,8 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.tailscale.enable = true;
+  services.openssh.enable = true;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -97,9 +107,52 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+     wget
+     ghostty
+     stremio
+     python3Full
+     btop
+     vesktop
+     git
+     obs-studio
+     gitkraken
+     spotify
+     warp-terminal
+     docker-client
+     docker-compose
+     putty
+     obsidian
+     nodejs
+     jetbrains.idea-community-bin
+     chromium
+     kubectl
+     pipewire
+     nerdfonts
+     qutebrowser
+     flameshot
+     nmap
+     vscode
+     vimPlugins.LazyVim
+     neovim
+     vim
+     notion 
+     telegram-desktop
+     nix-software-center
+    #lang
+     javascript-typescript-langserver
+     jetbrains.idea-community
+     go
+     gitg
+     tailscale
+     openssh
+     cron
+
+
+
   ];
 
+ # services
+  
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
