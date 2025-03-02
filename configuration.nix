@@ -135,7 +135,7 @@ in
      vimPlugins.LazyVim
      neovim
      vim
-     notion 
+     notion
      telegram-desktop
      nix-software-center
     #lang
@@ -152,7 +152,7 @@ in
   ];
 
  # services
-  
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
